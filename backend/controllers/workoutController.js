@@ -45,7 +45,6 @@ const createWorkout = async (req, res) => {
 //delete a workout
 const deleteWorkout = async (req, res) => {
   const { id } = req.params;
-
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such workout" });
   }
@@ -55,6 +54,7 @@ const deleteWorkout = async (req, res) => {
     if (!workout) {
       return res.json({ msg: "Error" });
     }
+    res.status(200).json(workout)
   } catch (err) {
     return res.json({ msg: "Error" });
   }
