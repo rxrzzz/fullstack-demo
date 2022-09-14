@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { WorkoutForm } from "../components/WorkoutForm";
 import { WorkoutDetails } from "./WorkoutDetails";
 
 export const Home = () => {
@@ -22,6 +23,7 @@ export const Home = () => {
             <WorkoutDetails workout={workout} />
           </React.Fragment>
         ))}
+      <WorkoutForm />
     </div>
   );
 };
