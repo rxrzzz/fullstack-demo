@@ -19,6 +19,23 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
+//static login method
+userSchema.statics.login = async function (email, password) {
+  if (!email || !password) {
+    throw Error("all fields must be filled");
+  }
+  const user = await this.findOne({ email });
+  if (!user) {
+    throw Error("Incorrect user");
+  }
+  const match = await bcrypt.compare(password, user.password);
+
+  if (!match) {
+    throw Error("Invalid login credentials");
+  }
+  return user
+};
+
 //static signup method
 userSchema.statics.signup = async function (email, password) {
   //validation
@@ -33,7 +50,7 @@ userSchema.statics.signup = async function (email, password) {
   }
 
   const exists = await this.findOne({ email });
-  if (exists) {
+  if (!exists) {
     throw Error("Email already in use");
   }
 
