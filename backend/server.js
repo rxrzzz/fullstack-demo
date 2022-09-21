@@ -24,5 +24,5 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/workouts", workoutRoutes);
-app.use("/api/user/", userRoutes);
+app.use("/api/user", userRoutes);
 // listen for requests

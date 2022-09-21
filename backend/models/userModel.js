@@ -33,7 +33,7 @@ userSchema.statics.login = async function (email, password) {
   if (!match) {
     throw Error("Invalid login credentials");
   }
-  return user
+  return user;
 };
 
 //static signup method
@@ -45,12 +45,12 @@ userSchema.statics.signup = async function (email, password) {
   if (!validator.isEmail(email)) {
     throw Error("Email is not valid");
   }
-  if (!validator.isStrongPassword(password)) {
-    throw Error("Password not strong enough");
-  }
+  // if (!validator.isStrongPassword(password)) {
+  //   throw Error("Password not strong");
+  // }
 
   const exists = await this.findOne({ email });
-  if (!exists) {
+  if (exists) {
     throw Error("Email already in use");
   }
 

@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useLogin } from "../hooks/useLogin";
 
 export const Login = () => {
+  const { login, error, isLoading } = useLogin();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(email, password)
-  }
+    await login(email, password);
+  };
 
   return (
     <form className="" onSubmit={handleSubmit}>
@@ -17,6 +19,7 @@ export const Login = () => {
       <label>Password</label>
       <input type="password" onChange={(e) => setPassword(e.target.value)} />
       <button type="submit">Login</button>
+      {error && <div className="error">{error}</div>}
     </form>
   );
 };
