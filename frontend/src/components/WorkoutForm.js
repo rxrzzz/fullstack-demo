@@ -18,13 +18,13 @@ export const WorkoutForm = () => {
       return;
     }
     const workout = { title, load, reps };
-    console.log("here")
+    console.log("here");
     const response = await fetch("/api/workouts", {
       method: "POST",
       body: JSON.stringify(workout),
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${user.token}`,
+        Authorization: `Bearer ${user.token}`,
       },
     });
     const json = await response.json();

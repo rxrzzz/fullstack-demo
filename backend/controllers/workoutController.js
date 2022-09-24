@@ -54,7 +54,7 @@ const deleteWorkout = async (req, res) => {
     if (!workout) {
       return res.json({ msg: "Error" });
     }
-    res.status(200).json(workout)
+    res.status(200).json(workout);
   } catch (err) {
     return res.json({ msg: "Error" });
   }

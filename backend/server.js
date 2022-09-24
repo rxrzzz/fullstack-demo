@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 //express app
 const app = express();
 
+
 //connect to db
 mongoose
   .connect(process.env.MONGO_URI)

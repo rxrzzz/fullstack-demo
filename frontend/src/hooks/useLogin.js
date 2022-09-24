@@ -15,7 +15,7 @@ export const useLogin = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
-    
+
     const json = await response.json();
     if (!response.ok) {
       setisLoading(false);
@@ -23,7 +23,7 @@ export const useLogin = () => {
     }
     if (response.ok) {
       //save the user to local storage
-      console.log("here!")
+      console.log("here!");
       localStorage.setItem("user", JSON.stringify(json));
       setError(null);
       //update the auth context
